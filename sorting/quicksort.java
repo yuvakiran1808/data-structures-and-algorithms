@@ -25,7 +25,7 @@ class quicksort {
                 arr[j] = temp;
             }
         }
-        int temp1 = pivot;
+        // int temp1 = pivot;
         arr[left] = arr[j];
         arr[j] = pivot;
         
@@ -43,7 +43,7 @@ class quicksort {
         }
     }
     public static void main(String[] args) {
-       int arr[] = {2,3,1,9,0,5};
+       int arr[] = {21,3,3,99,0,54};
        quicksort1(arr,0,5);
        
        for(int k=0;k<arr.length;k++)

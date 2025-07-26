@@ -1,55 +1,47 @@
-// package sorting;
 
-class quicksort {
-    
-    public static int partition(int arr[],int left,int right)
-    {
-        int pivot = arr[left];
-        int i = left;
-        int j = right;
-        
-        while(i<j)
-        {
-            while(arr[i]<=pivot&&i<=right-1)
-            {
+public class quicksort {
+
+    public static int partition(int arr[], int low, int high) {
+        int i = low;
+        int j = high;
+        int pivot = arr[low];
+        while (i < j) {
+            while (arr[i] <= pivot && i <= high - 1) {
                 i++;
             }
-            while(arr[j]>pivot&&j>=left+1)
-            {
+            while (arr[j] >= pivot && j >= low + 1) {
                 j--;
             }
-            if(i<j)
-            {
-                int temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
+            if (i < j) {
+                int temp = arr[j];
+                arr[j] = arr[i];
+                arr[i] = temp;
             }
         }
-        // int temp1 = pivot;
-        arr[left] = arr[j];
+
+        arr[low] = arr[j];
         arr[j] = pivot;
-        
+
         return j;
-        
-        
     }
-    public static void quicksort1(int arr[],int low,int high)
-    {
-        if(low<high)
-        {
-            int pi = partition(arr,low,high);
-            quicksort1(arr,low,pi-1);
-            quicksort1(arr,pi+1,high);
+
+    public static void qsort(int arr[], int low, int high) {
+        if (low < high) {
+            int pi = partition(arr, low, high);
+            qsort(arr, low, pi - 1);
+            qsort(arr, pi + 1, high);
         }
+
     }
+
     public static void main(String[] args) {
-       int arr[] = {21,3,3,99,0,54};
-       quicksort1(arr,0,5);
-       
-       for(int k=0;k<arr.length;k++)
-       {
-           System.out.print(arr[k]+" ");
-       }
-        
+        int arr[] = { 4, 2, 9, 1 };
+        int len = arr.length;
+        qsort(arr, 0, len - 1);
+
+        for(int i=0;i<len;i++)
+        {
+            System.out.println(arr[i]);
+        }
     }
 }

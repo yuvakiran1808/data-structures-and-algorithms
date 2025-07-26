@@ -19,8 +19,8 @@ class PrintSubsequence {
             printAllSubs(arr,list,index+1,len);
     }
     public static void main(String[] args) {
-         int arr[] = {1,2,5,2};
+         int arr[] = {1,2,3};
          List<Integer> list = new ArrayList<>();
-         printAllSubs(arr,list,0,4);
+         printAllSubs(arr,list,0,3);
     }
 }

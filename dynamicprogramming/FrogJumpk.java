@@ -3,7 +3,7 @@ package dynamicprogramming;
 import java.util.Arrays;
 
 public class FrogJumpk {
-    //memoization
+    // memoization
     public static int frogkJumps(int index, int[] height, int[] dp, int k) {
         if (index == 0) {
             return 0;
@@ -23,7 +23,23 @@ public class FrogJumpk {
         return dp[index] = AllSteps;
     }
 
-    //tabulation
+    // tabulation
+    public static int frogkJumpsTabulation(int n, int[] height, int[] dp, int k) {
+        dp[0] = 0;
+        for (int i = 1; i < n; i++) {
+            int AllSteps = Integer.MAX_VALUE;
+            for (int j = 1; j <= k; j++) {
+                if (i - j >= 0) {
+                    int jumps = dp[i - j] + Math.abs(height[i] - height[i - j]);
+                    AllSteps = Math.min(AllSteps, jumps);
+                }
+            }
+            dp[i] = AllSteps;
+
+        }
+
+        return dp[n - 1];
+    }
 
     public static void main(String[] args) {
         int[] height = { 10, 20, 30, 10 };
@@ -32,5 +48,6 @@ public class FrogJumpk {
         Arrays.fill(dp, -1);
         int k = 3;
         System.out.println(frogkJumps(n - 1, height, dp, k));
+        System.out.println(frogkJumpsTabulation(n, height, dp, k));
     }
 }
